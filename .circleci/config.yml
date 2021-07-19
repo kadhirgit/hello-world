@@ -6,20 +6,26 @@ orbs:
   welcome: circleci/welcome-orb@0.4.1
 # Orchestrate or schedule a set of jobs
 jobs:
-  print_name:
-    docker:
-       - image: cimg/base:2020.01
+  print_msg:
+    docker: 
+      - image: cimg/base:2020.01
     steps:
       - run: 
-          command: echo "my name is khan"
+         command : echo "executing"
+      - run: 
+         command : return 1
+
       - run:
-          command: return 1
-      - run:
-          command: echo :"run after failure"
-          when: on_fail
+         command : echo "end..."
+      - run: 
+         command : echo "after failed"
+         when: on_fail
+          
+
 workflows:
   # Name the workflow "welcome"
   welcome:
     # Run the welcome/run job in its own container
     jobs:
       - welcome/run
+      - print_msg
