@@ -5,6 +5,18 @@ orbs:
   # Declare a dependency on the welcome-orb
   welcome: circleci/welcome-orb@0.4.1
 # Orchestrate or schedule a set of jobs
+jobs:
+  print_name:
+    docker:
+       - image: cimg/base:2020.01
+    steps:
+      - run: 
+          command: echo "my name is khan"
+      - run:
+          command: return 1
+      - run:
+          command: echo :"run after failure"
+          when: on_fail
 workflows:
   # Name the workflow "welcome"
   welcome:
