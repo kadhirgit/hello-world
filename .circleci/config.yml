@@ -14,7 +14,7 @@ jobs:
     steps:
       - run: echo $My_name
       - run: echo "Sharing files test" > ~/output.txt
-      - run: cat output.txt 
+      - run: cat ~/output.txt 
       - persist_to_workspace:
           root: ~/
           paths:
