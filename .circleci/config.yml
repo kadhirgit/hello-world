@@ -9,7 +9,10 @@ orbs:
 defaults: &defaults
    docker:
       - image: circleci/node:13.8.0
-
+commands:
+   print_env_name:
+      steps:
+        - run: echo ${CIRCLE.WORKFLOW_ID} 
 jobs:
   print_name:
     <<: *defaults
@@ -23,6 +26,7 @@ jobs:
           root: ~/
           paths:
             - output.txt
+      - print_env_name
 
   print_output_file:
     <<: *defaults
