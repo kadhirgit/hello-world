@@ -13,6 +13,9 @@ jobs:
       My_name: "reshak"
     steps:
       - run: echo $My_name
+      - run: echo "Sharing files test" > output.txt
+   
+
     
 workflows:
   # Name the workflow "welcome"
